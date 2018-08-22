@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                            http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+	<!-- #################################################################### -->
+	<!-- mybatist-context 설정 -->
+	<!-- application-config.xml 에서 import 함 -->
+	<!-- #################################################################### -->
+	
+	<!-- ==================================================================== -->
+	<!-- Message Source -->
+	<!-- ReloadableResourceBundleMessageSource 클래스는 해당 Properties 파일이 변경되었을 경우에도 애플리케이션을 다시 시작할 필요하 없다는 장점이 있습니다. -->
+	<!-- ==================================================================== -->
+	<bean id="rootMessageSource" class= "org.springframework.context.support.ReloadableResourceBundleMessageSource" >
+		<property name= "basenames">
+			<list>
+				<value>classpath:messages/core</value>
+			</list>
+		</property>
+		<property name="fileEncodings" value="UTF-8" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+	<!-- ==================================================================== -->
+	<!-- DataSource Set -->
+	<!-- 접속정보파일  -->
+	<!-- ==================================================================== -->
+	<!-- 이하의 데이터베이스 관련 빈에서 사용할 jdbc.properties를 가져오는 빈 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+		<property name="locations" value="/WEB-INF/spring/jdbc.properties"/>    
+		<property name="fileEncoding" value="UTF-8"/>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+    	<property name="ignoreResourceNotFound" value="true" />
+	</bean>
+	
+	<!-- ==================================================================== -->
+	<!-- DB 접속설정 -->
+	<!-- ==================================================================== -->
+	<!-- Apache DBCP DataSource를 생성한다. 데이터베이스 관련 설정은 jdbc.properties를 따른다. -->
+	<bean id="dataSourceComm" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" destroy-method="close" >
+		<property name="driverClassName" value="${jdbc.mysql.driverClass}"/>
+		<property name="url" value="${jdbc.mysql.url}"/>
+		<property name="username" value="${jdbc.mysql.username}"/>
+		<property name="password" value="${jdbc.mysql.password}"/>
+	</bean>
+	
+	<!-- mybatis SqlSessionFactory 빈을 생성한다. (dataSource, Mapper 파일 설정) -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="dataSource" ref="dataSourceComm" />
+		<property name="mapperLocations" value="classpath:sql/mapper/mysql/*.xml" />
+	</bean>
+	
+	<!-- SqlSession 빈을 생성한다. (SqlSessionFactory 주입, Dao에서 사용) -->
+	<bean id="sqlSessionComm" name="sqlSessionComm" class="org.mybatis.spring.SqlSessionTemplate" >
+		<constructor-arg index= "0" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- ==================================================================== -->
+	<!-- 트랜잭션 매니저 빈을 생성한다.(커밋,롤백 처리) -->
+	<!-- 반듯이 servlet-context.xml 에 -->
+	<!-- <tx:annotation-driven transaction-manager="transactionManagerAdmin" /> 를 -->
+	<!-- 선언해주어야한다.(mybatis-context.xml 에 선언하면 커밋, 롤백처리 안됨 -->
+	<!-- ==================================================================== -->
+	<bean id="transactionManager" class= "org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+		<property name= "dataSource" ref="dataSourceComm" />
+	</bean>
+	
+	
+	<!-- @Transactional을 Service interface 없이 사용할 경우 필요 -->
+	<tx:annotation-driven proxy-target-class="true"/>
+	
+</beans>
