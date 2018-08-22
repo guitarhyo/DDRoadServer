@@ -1,15 +1,10 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="WebApp_ID" version="2.5">
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 
     <display-name>SpringMavenServer</display-name>
-    
    <!--
-		- Location of the XML file that defines the root application context.
-		- Applied by ContextLoaderListener.
+		- 루트 응용 프로그램 컨텍스트를 정의하는 XML 파일의 위치입니다.
+		- ContextLoaderListener에 의해 적용됩니다.
 	-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -22,7 +17,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     
     
     <!--
-		- Servlet that dispatches request to registered handlers (Controller implementations).
+    	- 등록 된 핸들러 (컨트롤러 구현)에 요청을 전달하는 서블릿입니다.
 	-->
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
@@ -39,4 +34,26 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+<!-- 필터 관련 http://blog.naver.com/PostView.nhn?blogId=anjdieheocp&logNo=20116839594 -->
+ <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+<!--   root URL 지정 -->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>
