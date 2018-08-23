@@ -60,7 +60,7 @@ public class BaseController {
   @RequestMapping(value = "/loginJson.do")
   public @ResponseBody Map<String, String> login(ModelAndView mv, HttpSession session)
       throws Exception {
-   
+   String str = "test";
     return null;
   }
 
