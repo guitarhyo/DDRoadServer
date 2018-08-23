@@ -4,7 +4,7 @@
 <mapper namespace="CommonDao">
 
 <select id="selectBoard" resultType="map">
-
+	select * from board
 </select>
 
 

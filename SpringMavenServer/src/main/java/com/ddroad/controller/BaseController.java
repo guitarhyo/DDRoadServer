@@ -33,9 +33,6 @@ public class BaseController {
   @Autowired
   private CommonService service;
 
-
-
-
   @RequestMapping("/boardList.do")
   public ModelAndView login(HttpServletRequest request, HttpServletResponse response,
       @RequestParam Map<String, Object> inParam) throws Exception {

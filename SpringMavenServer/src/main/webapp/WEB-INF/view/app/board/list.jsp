@@ -14,9 +14,18 @@
 
 <table border="1">
 <tr>
-<th>제목</th></tr>
+	<th>제목</th>
+	<th>내용</th>
+	<th>등록일</th>
+	<th>등록아이디</th>
+</tr>
 <c:forEach items="${list }" var="list">
-	<tr><td>${list.title }</td></tr>
+	<tr>
+		<td>${list.title }</td>
+		<td>${list.contents }</td>
+		<td>${list.regdt }</td>
+		<td>${list.regid }</td>
+	</tr>
 </c:forEach>
 </table>
 </body>
