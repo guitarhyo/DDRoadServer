@@ -1,3 +1,4 @@
+package com.ddroad;
 
 
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
