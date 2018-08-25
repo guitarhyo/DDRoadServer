@@ -24,7 +24,7 @@ import com.ddroad.service.CommonService;
  * since 2018. 8. 22. 오후 9:46:37
  * History
  * Date				|	author		| 변경 내용
- * 2018. 8. 22.		|	N.H.KIM		|신규
+ * 2018. 8. 22.		|	N.H.KIM		| 신규
  * </pre>
  */
 @Controller
