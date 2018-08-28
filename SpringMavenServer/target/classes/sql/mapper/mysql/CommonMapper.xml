@@ -6,6 +6,8 @@
 <select id="selectBoard" resultType="map">
 	select * from board
 </select>
-
+<insert id="join">
+	INSERT INTO USERS VALUES (#{id}, #{password}, #{name}, #{email}, #{nickname}, #{mobile}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+</insert>
 
 </mapper>

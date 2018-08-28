@@ -22,6 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.ddroad.model.UserVO;
+
 
 /**
  * <pre>
@@ -58,9 +60,8 @@ public class CommonDao {
 	 */
 	public List<Map<String,String>> selectBoard() throws Exception {
 		return sqlSession.selectList(NS +"selectBoard");
-
 	}
-	
+
 	
 	//테스트용
 	public static void main(String[] args) {

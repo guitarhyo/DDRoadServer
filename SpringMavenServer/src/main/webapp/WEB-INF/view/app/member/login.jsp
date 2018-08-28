@@ -20,7 +20,7 @@
 <title>로그인</title>
 </head>
 <body>
-	<body>
+	<div style="text-align:center">${url}</div>
     <div class="container">
         <div class="row">
             <div class="col-sm-4"></div>
@@ -42,9 +42,8 @@
                         <div class="box">
                              <div class="content">
                                 <div class="social">
-                                    <a class="circle github" href="/auth/github">
-                                        <i class="fa fa-github fa-fw"></i>
-                                    </a>
+                                   <a href="${url}"><img src="resources/images/naverLoginBtn_icon.PNG" alt="naverLogin" height=34/></a>
+                                   
                                     <a id="google_login" class="circle google" href="/auth/google_oauth2">
                                         <i class="fa fa-google-plus fa-fw"></i>
                                     </a>
@@ -70,11 +69,15 @@
                         <div class="box">
                             <div class="content registerBox" style="display:none;">
                              <div class="form">
-                                <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
-                                <input id="email" class="form-control" type="text" placeholder="이메일" name="email">
-                                <input id="password" class="form-control" type="password" placeholder="비밀번호" name="password">
-                                <input id="password_confirmation" class="form-control" type="password" placeholder="비밀번호 확인" name="password_confirmation">
-                                <input class="btn btn-default btn-register" type="submit" value="확인" name="commit">
+                                <form method="post" html="{:multipart=>true}" data-remote="true" action="join" accept-charset="UTF-8">
+                                	<input id="id" class="form-control" type="text" placeholder="아이디" name="id"/>
+	                                <input id="password" class="form-control" type="password" placeholder="비밀번호" name="password">
+	                                <input id="password_confirmation" class="form-control" type="password" placeholder="비밀번호 확인" name="password_confirmation">
+	                                <input id="name" class="form-control" type="text" placeholder="이름" name="name" />
+	                                <input id="email" class="form-control" type="text" placeholder="이메일" name="email">
+	                                <input id="nickname" class="form-control" type="text" placeholder="닉네임" name="nickname"/>
+	                                <input id="mobile" class="form-control" type="text" placeholder="휴대전화" name="mobile"/>
+	                                <input class="btn btn-default btn-register" type="submit" value="확인" name="commit">
                                 </form>
                                 </div>
                             </div>
@@ -95,6 +98,5 @@
 		      </div>
 		  </div>
     </div>
-</body>
 </body>
 </html>

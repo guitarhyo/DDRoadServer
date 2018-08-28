@@ -125,16 +125,13 @@
 		<!-- Json end -->
 		
 		<!-- Commons -->
-	
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.2.1</version>
 		</dependency>
-
 	
-	
-				<!-- myBatis -->
+		<!-- myBatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -176,8 +173,12 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		     <version>5.1.46</version>
 		</dependency>
-
-
+		<!-- NAVER OAuth -->
+		<dependency>
+			<groupId>com.github.scribejava</groupId>
+			<artifactId>scribejava-core</artifactId>
+			<version>2.8.1</version>
+		</dependency>
 	</dependencies>	
 	
 	 <build>
@@ -221,10 +222,6 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
- 
-  
-            
-             
         </plugins>
   </build>
 </project>
