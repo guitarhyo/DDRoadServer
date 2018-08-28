@@ -36,6 +36,12 @@
 		<property name="url" value="${jdbc.mysql.url}"/>
 		<property name="username" value="${jdbc.mysql.username}"/>
 		<property name="password" value="${jdbc.mysql.password}"/>
+		<!-- 특정 시간마다 validationQuery를 실행 셋팅 시작 -->
+        <property name="validationQuery" value="select 1"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="timeBetweenEvictionRunsMillis" value="3600000"/>
+        <!-- 특정 시간마다 validationQuery를 실행 셋팅 끝 -->
+		<!-- 출처: http://egloos.zum.com/kwon37xi/v/2472081 -->
 	</bean>
 	
 	<!-- mybatis SqlSessionFactory 빈을 생성한다. (dataSource, Mapper 파일 설정) -->
