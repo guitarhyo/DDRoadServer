@@ -9,5 +9,9 @@
 <body>
 	<p>url : ${url}</p>
 	<div style="text-align:center">${result}</div>
+	<p>url : ${session}</p>
+	<div style="text-align:center">${sessionScope.oauth_state}</div>
+	
+	
 </body>
 </html>

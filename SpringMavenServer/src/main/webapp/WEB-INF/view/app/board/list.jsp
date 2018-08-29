@@ -7,9 +7,17 @@
 <meta charset="utf-8" /> 
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <meta name="format-detection" content="telephone=no"/>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+  var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", "http://localhost:8080/app/login/loginScriptCallback.do");
+  // 접근 토큰 값 출력
+  console.log(naver_id_login.oauthParams.access_token);
+  </script>
 </head>
 <body>
+
 <%=request.getAttribute("testdata") %>
 
 <table border="1">

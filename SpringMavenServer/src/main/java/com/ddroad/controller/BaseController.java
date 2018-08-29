@@ -34,7 +34,7 @@ public class BaseController {
   private CommonService service;
 
   @RequestMapping("/boardList.do")
-  public ModelAndView login(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView boardList(HttpServletRequest request, HttpServletResponse response,
       @RequestParam Map<String, Object> inParam) throws Exception {
   
     ModelAndView mav = new ModelAndView();
@@ -54,12 +54,12 @@ public class BaseController {
 
 
 
-  @RequestMapping(value = "/loginJson.do")
-  public @ResponseBody Map<String, String> login(ModelAndView mv, HttpSession session)
-      throws Exception {
-   
-    return null;
-  }
+//  @RequestMapping(value = "/loginJson.do")
+//  public @ResponseBody Map<String, String> loginJson(ModelAndView mv, HttpSession session)
+//      throws Exception {
+//   
+//    return null;
+//  }
 
 
 }

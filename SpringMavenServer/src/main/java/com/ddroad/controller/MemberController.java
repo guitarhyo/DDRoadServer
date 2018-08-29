@@ -18,6 +18,7 @@ import com.ddroad.service.user.UserServiceImpl;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 @Controller
+@RequestMapping("/app/login")
 public class MemberController {
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
@@ -29,7 +30,21 @@ public class MemberController {
 		this.naverLoginBO = naverLoginBO;
 	}
 	
-	@RequestMapping("/login")
+	@RequestMapping("/loginScript.do")
+	public ModelAndView loginPageScript(HttpSession session) {
+
+	
+		return new ModelAndView("app/member/loginScript");
+	}
+	
+	@RequestMapping("/loginScriptCallback.do")
+	public ModelAndView loginPageScriptCallback(HttpSession session) {
+
+	
+		return new ModelAndView("app/member/loginScriptCallback");
+	}
+	
+	@RequestMapping("/login.do")
 	public ModelAndView loginPage(HttpSession session) {
 		/*네아로 인증 URL을 생성하기 위하여 getAuthorizationUrl을 호출*/
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
@@ -39,7 +54,7 @@ public class MemberController {
 		return new ModelAndView("app/member/login","url",naverAuthUrl);
 	}
 	
-	@RequestMapping(value="/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value="/callback.do")
 	public ModelAndView callback(@RequestParam String code, @RequestParam String state, HttpSession session) throws IOException {
 		
 		/* 네아로 인증이 성공적으로 완료되면 code 파라미터가 전달되며 이를 통해 access token을 발급*/
@@ -50,7 +65,7 @@ public class MemberController {
 		return new ModelAndView("app/member/callback","result",apiResult);
 	}
 	
-	@RequestMapping("/join")
+	@RequestMapping("/join.do")
 	public String join(@ModelAttribute UserVO user, HttpSession session) throws Exception{
 		System.out.println("join");
 		service.join(user);

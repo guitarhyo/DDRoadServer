@@ -3,19 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+	<meta charset="utf-8" /> 
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+	<meta name="format-detection" content="telephone=no"/>
+	
 	<style>body{padding-top: 60px;}</style>
 	
-    <link href="resources/css/bootstrap.css" rel="stylesheet" />
+    <link href="/resources/css/bootstrap.css" rel="stylesheet" />
  
-	<link href="resources/css/login-register.css" rel="stylesheet" />
+	<link href="/resources/css/login-register.css" rel="stylesheet" />
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 	
-	<script src="resources/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="resources/js/bootstrap.js" type="text/javascript"></script>
-	<script src="resources/js/login-register.js" type="text/javascript"></script>
+	<script src="/resources/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="/resources/js/bootstrap.js" type="text/javascript"></script>
+	<script src="/resources/js/login-register.js" type="text/javascript"></script>
 	
 <title>로그인</title>
 </head>
@@ -42,7 +43,7 @@
                         <div class="box">
                              <div class="content">
                                 <div class="social">
-                                   <a href="${url}"><img src="resources/images/naverLoginBtn_icon.PNG" alt="naverLogin" height=34/></a>
+                                   <a href="${url}"><img src="/resources/images/naverLoginBtn_icon.PNG" alt="naverLogin" height=34/></a>
                                    
                                     <a id="google_login" class="circle google" href="/auth/google_oauth2">
                                         <i class="fa fa-google-plus fa-fw"></i>
