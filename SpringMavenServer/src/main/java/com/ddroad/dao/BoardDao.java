@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.ddroad.model.BoardVO;
+
 @Repository
 public class BoardDao {
 	private static final String NS = CommonDao.class.getSimpleName() + ".";
@@ -29,5 +31,9 @@ public class BoardDao {
 	 */
 	public List<Map<String,String>> selectBoard() throws Exception {
 		return sqlSession.selectList(NS +"selectBoard");
+	}
+	
+	public int write(BoardVO vo) throws Exception{
+		return sqlSession.insert("write", vo);
 	}
 }

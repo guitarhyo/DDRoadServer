@@ -32,9 +32,10 @@
 		<td>${list.title }</td>
 		<td>${list.contents }</td>
 		<td>${list.regdt }</td>
-		<td>${list.regid }</td>
+		<td>${list.writer }</td>
 	</tr>
 </c:forEach>
 </table>
+<button onclick="location.href='/app/board/write.do'">글 쓰기</button>
 </body>
 </html>

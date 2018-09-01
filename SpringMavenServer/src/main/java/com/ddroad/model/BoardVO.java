@@ -5,12 +5,20 @@ import java.sql.Timestamp;
 public class BoardVO {
 	private String id;
 	private String title;
+	private String writer;
 	private String nickname;
 	private String contents;
 	private int like;
 	private int hit;
 	private Timestamp regdt;
 	
+	public String getWriter() {
+		return writer;
+	}
+	
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public String getId() {
 		return id;
 	}
@@ -53,6 +61,28 @@ public class BoardVO {
 	public void setRegdt(Timestamp regdt) {
 		this.regdt = regdt;
 	}
-	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("BoardVO [id=");
+		builder.append(id);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", writer=");
+		builder.append(writer);
+		builder.append(", nickname=");
+		builder.append(nickname);
+		builder.append(", contents=");
+		builder.append(contents);
+		builder.append(", like=");
+		builder.append(like);
+		builder.append(", hit=");
+		builder.append(hit);
+		builder.append(", regdt=");
+		builder.append(regdt);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 }

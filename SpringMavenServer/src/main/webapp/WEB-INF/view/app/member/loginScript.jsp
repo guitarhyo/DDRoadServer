@@ -97,7 +97,7 @@
   	 
     function goPageBoard() {
     	if(loginCheck){
-    		  location.href = "/boardList.do"
+    		  location.href = "/app/board/boardList.do"
     	}else{
     		alert("로그인 하시오");
     	}
