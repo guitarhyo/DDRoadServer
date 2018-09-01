@@ -14,7 +14,8 @@
 	//(1) LoginWithNaverId Javscript 설정 정보 및 초기화 
 	var naverLogin = new naver.LoginWithNaverId(
 			{
-				clientId: "iJniRieB_LTnqFzPCndV",
+// 				clientId: "iJniRieB_LTnqFzPCndV",
+				clientId: "xiHvXJarMFipg36pfAtS",
 				callbackUrl: "http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/app/login/loginScriptCallback.do",
 				isPopup: false,
 				callbackHandle: true
@@ -31,6 +32,12 @@
 				if (status) {
 					/* (4) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
 					var email = naverLogin.user.getEmail();
+// 					var nickname = naverLogin.user.getNickName();
+// 					var gender = naverLogin.user.getGender();
+// 					var age = naverLogin.user.getAge();
+// 					var data = JSON.stringify({id:id,email:email,nickname:nickname,gender:gender,age:age});
+// 					alert(id + " " + email + " " + nickname + " " + gender + " " + age);
+				
 					if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
 						/* (4-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */

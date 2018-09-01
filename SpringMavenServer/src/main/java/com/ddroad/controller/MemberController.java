@@ -2,13 +2,12 @@ package com.ddroad.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,16 +30,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/loginScript.do")
-	public ModelAndView loginPageScript(HttpSession session) {
-
-	
+	public ModelAndView loginPageScript(HttpSession session) {	
 		return new ModelAndView("app/member/loginScript");
 	}
 	
 	@RequestMapping("/loginScriptCallback.do")
 	public ModelAndView loginPageScriptCallback(HttpSession session) {
-
-	
 		return new ModelAndView("app/member/loginScriptCallback");
 	}
 	
@@ -66,9 +61,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/join.do")
-	public String join(@ModelAttribute UserVO user, HttpSession session) throws Exception{
-		System.out.println("join");
+	public String join(HttpServletRequest request, HttpSession session) throws Exception{
+		String id = request.getParameter("id");
+		String email = request.getParameter("email");
+		String nickname = request.getParameter("nickname");
+		String gender = request.getParameter("gender");
+		String age = request.getParameter("age");
+		UserVO user = new UserVO(id, email, nickname, gender, age);
 		service.join(user);
-		return "app/member/joinOK";
+//		System.out.println(id + " " + email + " " + nickname + " " + gender + " " + age);
+		return "redirect:/app/login/loginScript.do";
 	}
 }

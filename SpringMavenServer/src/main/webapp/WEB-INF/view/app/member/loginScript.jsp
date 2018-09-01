@@ -27,10 +27,11 @@
   <script type="text/javascript">
 	var loginCheck = false;
 	
-	<!-- (2) LoginWithNaverId Javscript 설정 정보 및 초기화 -->
+	/* (2) LoginWithNaverId Javscript 설정 정보 및 초기화 */
+	
 	var naverLogin = new naver.LoginWithNaverId(
 			{
-				clientId: "iJniRieB_LTnqFzPCndV",
+				clientId: "xiHvXJarMFipg36pfAtS",
 				callbackUrl: "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port) + "/app/login/loginScriptCallback.do",
 				isPopup: false,
 				loginButton: {color: "green", type: 3, height: 60}
@@ -49,6 +50,34 @@
 				if (status) {
 					/* (6) 로그인 상태가 "true" 인 경우 로그인 버튼을 없애고 사용자 정보를 출력합니다. */
 					setLoginStatus();
+					
+					var id = naverLogin.user.getId();
+					var email = naverLogin.user.getEmail();
+					var nickname = naverLogin.user.getNickName();
+					var gender = naverLogin.user.getGender();
+					var age = naverLogin.user.getAge();
+					
+// 					var data = JSON.stringify({id:id,email:email,nickname:nickname,gender:gender,age:age});
+					
+					$.ajax({
+						type : 'POST',
+						url : '/app/login/join.do',
+// 						dataType : 'json',
+						data : {
+							'id' : id,
+							'email' : email,
+							'nickname' : nickname,
+							'gender' : gender,
+							'age' : age
+						},
+						success : function(result){
+							console.log("success");
+						},
+						error : function(){
+							alert("failed");
+						}
+					})
+					
 				}
 			});
 		});

@@ -16,4 +16,8 @@ public class UserDao {
 	public int join(UserVO vo) {
 		return sqlSession.insert("join",vo);
 	}
+	
+	public int selectById(String id) {
+		return sqlSession.selectOne("selectById",id);
+	}
 }

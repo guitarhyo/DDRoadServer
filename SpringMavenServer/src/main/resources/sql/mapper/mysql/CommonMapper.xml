@@ -6,8 +6,11 @@
 <select id="selectBoard" resultType="map">
 	select * from board
 </select>
+<select id="selectById" resultType="int">
+	select count(*) from users where id=#{id}
+</select>
 <insert id="join">
-	INSERT INTO USERS VALUES (#{id}, #{password}, #{name}, #{email}, #{nickname}, #{mobile}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+	INSERT INTO USERS VALUES (#{id}, #{email}, #{nickname},#{gender}, #{age})
 </insert>
 
 </mapper>
