@@ -7,15 +7,6 @@ public class UserVO {
 	private	String gender;
 	private String age;
 	
-	public UserVO(String id, String email, String nickname, String gender, String age) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.nickname = nickname;
-		this.gender = gender;
-		this.age = age;
-	}
-	
 	public String getId() {
 		return id;
 	}

@@ -41,26 +41,26 @@ import com.ddroad.model.UserVO;
  */
 @Repository
 public class CommonDao {
-	private static final String NS = CommonDao.class.getSimpleName() + ".";
-	@Autowired
-	@Qualifier(value = "sqlSessionComm")
-	private SqlSession sqlSession;
-
-	/**
-	 * <pre>
-	 *  리스트조회
-	 * @param 
-	 * @return List<>
-	 * @throws Exception
-	 * @since 2018. 8. 22. 
-	 * @author H.N.KIM
-	 * @비고
-	 *
-	 * </pre>
-	 */
-	public List<Map<String,String>> selectBoard() throws Exception {
-		return sqlSession.selectList(NS +"selectBoard");
-	}
+//	private static final String NS = CommonDao.class.getSimpleName() + ".";
+//	@Autowired
+//	@Qualifier(value = "sqlSessionComm")
+//	private SqlSession sqlSession;
+//
+//	/**
+//	 * <pre>
+//	 *  리스트조회
+//	 * @param 
+//	 * @return List<>
+//	 * @throws Exception
+//	 * @since 2018. 8. 22. 
+//	 * @author H.N.KIM
+//	 * @비고
+//	 *
+//	 * </pre>
+//	 */
+//	public List<Map<String,String>> selectBoard() throws Exception {
+//		return sqlSession.selectList(NS +"selectBoard");
+//	}
 
 	
 	//테스트용

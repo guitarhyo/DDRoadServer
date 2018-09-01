@@ -2,7 +2,6 @@ package com.ddroad.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ddroad.model.UserVO;
 import com.ddroad.naverLogin.oauth.bo.NaverLoginBO;
-import com.ddroad.service.user.UserServiceImpl;
+import com.ddroad.service.UserService;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 @Controller
@@ -22,7 +21,7 @@ public class MemberController {
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
 	@Autowired 
-	UserServiceImpl service;
+	UserService service;
 	
 	@Autowired
 	public void setNaverLoginBO(NaverLoginBO naverLoginBO) {
@@ -61,14 +60,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/join.do")
-	public String join(HttpServletRequest request, HttpSession session) throws Exception{
-		String id = request.getParameter("id");
-		String email = request.getParameter("email");
-		String nickname = request.getParameter("nickname");
-		String gender = request.getParameter("gender");
-		String age = request.getParameter("age");
-		UserVO user = new UserVO(id, email, nickname, gender, age);
-		service.join(user);
+	public String join(UserVO vo, HttpSession session) throws Exception{
+		service.join(vo);
 //		System.out.println(id + " " + email + " " + nickname + " " + gender + " " + age);
 		return "redirect:/app/login/loginScript.do";
 	}

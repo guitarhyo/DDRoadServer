@@ -33,27 +33,6 @@ public class BaseController {
   @Autowired
   private CommonService service;
 
-  @RequestMapping("/boardList.do")
-  public ModelAndView boardList(HttpServletRequest request, HttpServletResponse response,
-      @RequestParam Map<String, Object> inParam) throws Exception {
-  
-    ModelAndView mav = new ModelAndView();
-    try {
-     
-
-      mav.addObject("list", service.selectBoard());
-      mav.addObject("testdata", "Hello World!! spring");
-
-      
-      mav.setViewName("app/board/list");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return mav;
-  }
-
-
-
 //  @RequestMapping(value = "/loginJson.do")
 //  public @ResponseBody Map<String, String> loginJson(ModelAndView mv, HttpSession session)
 //      throws Exception {
