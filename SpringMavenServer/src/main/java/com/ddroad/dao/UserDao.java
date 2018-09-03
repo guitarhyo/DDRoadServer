@@ -1,5 +1,7 @@
 package com.ddroad.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,4 +22,9 @@ public class UserDao {
 	public int selectById(String id) {
 		return sqlSession.selectOne("selectById",id);
 	}
+	
+	public List<UserVO>selectUserList() {
+		return sqlSession.selectList("selectUserList");
+	}
+	
 }

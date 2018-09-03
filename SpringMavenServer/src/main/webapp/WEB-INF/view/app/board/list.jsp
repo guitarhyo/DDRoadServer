@@ -17,9 +17,6 @@
   </script>
 </head>
 <body>
-
-<%=request.getAttribute("testdata") %>
-
 <table border="1">
 <tr>
 	<th>제목</th>
@@ -37,5 +34,19 @@
 </c:forEach>
 </table>
 <button onclick="location.href='/app/board/write.do'">글 쓰기</button>
+
+<p>유저 리스트</p>
+<table border="1">
+<c:forEach items="${userList }" var="list2">
+	<tr>
+		<td>${list2.id }</td>
+		<td>${list2.email }</td>
+		<td>${list2.nickname }</td>
+		<td>${list2.gender }</td>
+		<td>${list2.age }</td>
+	</tr>
+</c:forEach>
+</table>
+
 </body>
 </html>

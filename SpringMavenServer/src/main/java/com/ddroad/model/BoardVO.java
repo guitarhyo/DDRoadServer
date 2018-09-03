@@ -2,6 +2,7 @@ package com.ddroad.model;
 
 import java.sql.Timestamp;
 
+
 public class BoardVO {
 	private String id;
 	private String title;

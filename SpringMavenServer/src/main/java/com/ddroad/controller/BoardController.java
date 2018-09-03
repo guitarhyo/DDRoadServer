@@ -1,26 +1,32 @@
 package com.ddroad.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionStatus;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ddroad.model.BoardVO;
 import com.ddroad.service.BoardService;
+import com.ddroad.service.UserService;
 
 @Controller
 @RequestMapping("/app/board")
 public class BoardController {
-	@Autowired BoardService service;
-//	@Autowired Session session;
+	@Autowired BoardService boardService;
+	@Autowired 
+	UserService userService;
+	
+	@Autowired HttpSession session;
 	
 	@RequestMapping("/boardList.do")
 	public ModelAndView boardList(HttpServletRequest request, HttpServletResponse response,
@@ -28,10 +34,10 @@ public class BoardController {
   
 	    ModelAndView mav = new ModelAndView();
 	    try {
-	     
-	
-	    mav.addObject("list", service.selectBoard());
-	    mav.addObject("testdata", "Hello World!! spring");
+	    System.out.println("session.getAttribute(\"DDROAD_USER\")===="+session.getAttribute("DDROAD_USER"));
+	    
+	    mav.addObject("list", boardService.selectBoard());
+	    mav.addObject("userList",userService.selectUserList());
 	
 	  
 	    mav.setViewName("app/board/list");

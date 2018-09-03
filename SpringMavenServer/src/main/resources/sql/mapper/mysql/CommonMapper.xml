@@ -4,19 +4,23 @@
 <mapper namespace="CommonDao">
 
 <select id="selectBoard" resultType="map">
-	select * from board
+	select * from BOARD
 </select>
 
-<select id="selectById" resultType="int">
-	select count(*) from users where id=#{id}
+<select id="selectUserList" resultType="com.ddroad.model.UserVO">
+	select * from USERS
 </select>
 
-<insert id="join">
+<select id="selectById" resultType="int" parameterType="com.ddroad.model.UserVO">
+	select count(*) from USERS where id=#{id}
+</select>
+
+<insert id="join" parameterType="com.ddroad.model.UserVO">
 	INSERT INTO USERS VALUES (#{id}, #{email}, #{nickname},#{gender}, #{age})
 </insert>
 
-<insert id="write">
-	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{content});
+<insert id="write" parameterType="com.ddroad.model.BoardVO">
+	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{content})
 	
 </insert>
 </mapper>

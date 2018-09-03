@@ -1,5 +1,7 @@
 package com.ddroad.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,9 @@ public class UserService{
 	/*중복 아이디 존재 여부 확인*/
 	public int selectById(String id) throws Exception {
 		return dao.selectById(id);
+	}
+	
+	public List<UserVO> selectUserList()throws Exception {
+		return dao.selectUserList();
 	}
 }
