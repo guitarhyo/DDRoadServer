@@ -9,7 +9,15 @@ public class UserVO {
 	private	String gender;
 	private String age;
 	private String accessToken;
+	private String name;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getId() {
 		return id;
 	}
@@ -61,9 +69,12 @@ public class UserVO {
 		builder.append(age);
 		builder.append(", accessToken=");
 		builder.append(accessToken);
+		builder.append(", name=");
+		builder.append(name);
 		builder.append("]");
 		return builder.toString();
 	}
+	
 
 	
 	

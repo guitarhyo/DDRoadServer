@@ -40,6 +40,7 @@
 <c:forEach items="${userList }" var="list2">
 	<tr>
 		<td>${list2.id }</td>
+		<td>${list2.name }</td>
 		<td>${list2.email }</td>
 		<td>${list2.nickname }</td>
 		<td>${list2.gender }</td>

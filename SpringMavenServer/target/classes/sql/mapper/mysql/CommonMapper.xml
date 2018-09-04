@@ -16,7 +16,7 @@
 </select>
 
 <insert id="join" parameterType="com.ddroad.model.UserVO">
-	INSERT INTO USERS VALUES (#{id}, #{email}, #{nickname},#{gender}, #{age})
+	INSERT INTO USERS VALUES (#{id}, #{email}, #{nickname},#{gender}, #{age}, #{name})
 </insert>
 
 <insert id="write" parameterType="com.ddroad.model.BoardVO">

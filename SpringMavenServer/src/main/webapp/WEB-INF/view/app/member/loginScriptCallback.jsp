@@ -22,23 +22,23 @@
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
   function naverSignInCallback() {
-	  console.log(naver_id_login);
-	  
-	  console.log(userAccessToken);
-	  console.log(naver_id_login.getProfileData('id'));
-	  console.log(naver_id_login.getProfileData('email'));
-	  console.log(naver_id_login.getProfileData('nickname'));
-	  console.log(naver_id_login.getProfileData('age'));
-	  console.log(naver_id_login.getProfileData('birthday'));
-	  console.log(naver_id_login.getProfileData('gender'));
-	  console.log(naver_id_login.getProfileData('name'));
-	  console.log(naver_id_login.getProfileData('profile_image'));
+	 // console.log(naver_id_login);	  
+	 // console.log(userAccessToken);
+	 // console.log(naver_id_login.getProfileData('id'));
+	 // console.log(naver_id_login.getProfileData('email'));
+	 // console.log(naver_id_login.getProfileData('nickname'));
+	 // console.log(naver_id_login.getProfileData('gender'));
+	 // console.log(naver_id_login.getProfileData('age'));
+	 // console.log(naver_id_login.getProfileData('birthday'));
+	 // console.log(naver_id_login.getProfileData('name'));
+	 // console.log(naver_id_login.getProfileData('profile_image'));
 	 
 		var id = naver_id_login.getProfileData('id');
 		var email = naver_id_login.getProfileData('email');
 		var nickname = naver_id_login.getProfileData('nickname');
 		var gender = naver_id_login.getProfileData('gender');
 		var age = naver_id_login.getProfileData('age');
+		var name = naver_id_login.getProfileData('name');
 		var accessToken = userAccessToken;
 		$.ajax({
 		type : 'POST',
@@ -49,13 +49,14 @@
 				'nickname' : nickname,
 				'gender' : gender,
 				'age' : age,
+				'name' : name,
 				'accessToken' : accessToken
 			},
 			success : function(result){
 				location.replace("/app/board/boardList.do");
 			},
 			error : function(){
-				alert("failed");
+				alert("로그인 실패 서버확인");
 			}
 		});
 
