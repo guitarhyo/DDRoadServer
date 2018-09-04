@@ -1,6 +1,5 @@
 package com.ddroad.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ddroad.model.BoardVO;
+import com.ddroad.model.UserVO;
 import com.ddroad.service.BoardService;
 import com.ddroad.service.UserService;
 
@@ -30,10 +30,18 @@ public class BoardController {
 	public ModelAndView boardList(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam Map<String, Object> inParam) throws Exception {
   
+		  
 	    ModelAndView mav = new ModelAndView();
 	    try {
-	    System.out.println("session.getAttribute(\"DDROAD_USER\")===="+session.getAttribute("DDROAD_USER"));
-	    
+	    	System.out.println("session.getAttribute(\"DDROAD_USER\")===="+session.getAttribute("DDROAD_USER"));
+	    	UserVO userVO =	(UserVO) session.getAttribute("DDROAD_USER");
+	    	
+			if(userVO == null){
+				return new ModelAndView("redirect:/");
+			}else if(userVO.getNickname() == null || "".equals(userVO.getNickname())){
+				return new ModelAndView("redirect:/app/login/checkNickNamePage.do");
+			}
+			
 	    mav.addObject("list", boardService.selectBoard());
 	    mav.addObject("userList",userService.selectUserList());
 	
@@ -41,6 +49,7 @@ public class BoardController {
 	    mav.setViewName("app/board/list");
 	    } catch (Exception e) {
 	      e.printStackTrace();
+	      return new ModelAndView("redirect:/");
 	    }
 	    return mav;
     }

@@ -6,9 +6,7 @@ public class UserVO {
 	private String id;
 	private String email;
 	private String nickname;
-	private	String gender;
-	private String age;
-	private String accessToken;
+	private String accesstoken;
 	private String name;
 	
 	
@@ -36,23 +34,11 @@ public class UserVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public String getGender() {
-		return gender;
+	public String getAccesstoken() {
+		return accesstoken;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-	public String getAge() {
-		return age;
-	}
-	public void setAge(String age) {
-		this.age = age;
-	}
-	public String getAccessToken() {
-		return accessToken;
-	}
-	public void setAccessToken(String accessToken) {
-		this.accessToken = accessToken;
+	public void setAccesstoken(String accesstoken) {
+		this.accesstoken = accesstoken;
 	}
 	@Override
 	public String toString() {
@@ -63,19 +49,14 @@ public class UserVO {
 		builder.append(email);
 		builder.append(", nickname=");
 		builder.append(nickname);
-		builder.append(", gender=");
-		builder.append(gender);
-		builder.append(", age=");
-		builder.append(age);
-		builder.append(", accessToken=");
-		builder.append(accessToken);
+		builder.append(", accesstoken=");
+		builder.append(accesstoken);
 		builder.append(", name=");
 		builder.append(name);
 		builder.append("]");
 		return builder.toString();
 	}
 	
-
 	
 	
 }

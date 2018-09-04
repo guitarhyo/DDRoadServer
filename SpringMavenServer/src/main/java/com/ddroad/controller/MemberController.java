@@ -1,10 +1,12 @@
 package com.ddroad.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ddroad.model.UserVO;
@@ -19,6 +21,9 @@ public class MemberController {
 	UserService service;
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	HttpServletRequest request;
 	
 //	@Autowired
 //	public void setNaverLoginBO(NaverLoginBO naverLoginBO) {
@@ -59,9 +64,47 @@ public class MemberController {
 	@RequestMapping("/join.do")
 	public String join(final UserVO vo) throws Exception{
 		service.join(vo);
+		
 		session.setAttribute("DDROAD_USER", vo);
 	
 //		System.out.println(id + " " + email + " " + nickname + " " + gender + " " + age);
 		return "redirect:/app/login/loginScript.do";
 	}
+	
+	@RequestMapping("/checkNickNamePage.do")
+	public String checkNickNamePage() throws Exception{
+		UserVO userVO =	(UserVO) session.getAttribute("DDROAD_USER");
+    	
+		if(userVO == null){
+			return "redirect:/";
+		}
+		request.setAttribute("userId", userVO.getId());
+		
+		return "app/member/loginCheck";
+	}
+	
+	@RequestMapping("/checkNickName.do")
+	public @ResponseBody String checkNickName(final UserVO vo) throws Exception{
+		int ret = service.selectUserNickname(vo.getNickname());
+		
+		if(ret > 0){
+			return "F";
+		}else{
+
+			ret = service.updateNickName(vo);
+			if(ret > 0){
+				UserVO userVO =	(UserVO) session.getAttribute("DDROAD_USER");
+		    	
+				if(userVO == null){
+					return "R";
+				}
+				
+				userVO.setNickname(vo.getNickname());
+				session.removeAttribute("DDROAD_USER");
+				session.setAttribute("DDROAD_USER", userVO);
+			}
+			return "S";
+		}
+	}
+	
 }

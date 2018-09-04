@@ -10,16 +10,32 @@
 <select id="selectUserList" resultType="com.ddroad.model.UserVO">
 	select * from USERS
 </select>
+<select id="selectUserNickname" resultType="int" parameterType="string">
+	select COUNT(1) from USERS where nickname = #{nickname}
+</select>
 
-<select id="selectById" resultType="int" parameterType="com.ddroad.model.UserVO">
-	select count(*) from USERS where id=#{id}
+<select id="selectByUser" resultType="com.ddroad.model.UserVO" parameterType="string">
+	select * from USERS where id=#{id}
+</select>
+
+<select id="selectById" resultType="int" parameterType="string">
+	select count(1) from USERS where id=#{id}
 </select>
 
 <insert id="join" parameterType="com.ddroad.model.UserVO">
-	INSERT INTO USERS VALUES (#{id}, #{email}, #{nickname},#{gender}, #{age}, #{name})
+	INSERT INTO USERS (id,email,name,accesstoken) VALUES (#{id}, #{email}, #{name},#{accesstoken})
 </insert>
 
+<update id="updateNickName" parameterType="com.ddroad.model.UserVO">
+	update 
+		USERS set 
+			nickname = #{nickname}
+		where
+	 		id = #{id}
+</update>
+
 <insert id="write" parameterType="com.ddroad.model.BoardVO">
-	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{contents})
+	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{content})
+	
 </insert>
 </mapper>

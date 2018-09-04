@@ -13,9 +13,8 @@
 <script type="text/javascript"> 	
 	var serviceUrl = "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port);
 	var callbackUrl =  serviceUrl + "/app/login/loginScriptCallback.do";	
-// 	var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
-	var naver_id_login = new naver_id_login("xiHvXJarMFipg36pfAtS", callbackUrl);
-	
+	var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+
   // 접근 토큰 값
   var userAccessToken = naver_id_login.oauthParams.access_token;
   
@@ -37,10 +36,8 @@
 		var id = naver_id_login.getProfileData('id');
 		var email = naver_id_login.getProfileData('email');
 		var nickname = naver_id_login.getProfileData('nickname');
-		var gender = naver_id_login.getProfileData('gender');
-		var age = naver_id_login.getProfileData('age');
 		var name = naver_id_login.getProfileData('name');
-		var accessToken = userAccessToken;
+		var accesstoken = userAccessToken;
 		$.ajax({
 		type : 'POST',
 		url : '/app/login/join.do',
@@ -48,10 +45,8 @@
 				'id' : id,
 				'email' : email,
 				'nickname' : nickname,
-				'gender' : gender,
-				'age' : age,
 				'name' : name,
-				'accessToken' : accessToken
+				'accesstoken' : accesstoken
 			},
 			success : function(result){
 				location.replace("/app/board/boardList.do");

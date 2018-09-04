@@ -22,7 +22,16 @@ public class UserDao {
 	public int selectById(String id) {
 		return sqlSession.selectOne("selectById",id);
 	}
+	public UserVO selectByUser(String id) {
+		return sqlSession.selectOne("selectByUser",id);
+	}
 	
+	public int selectUserNickname(String nickname) {
+		return sqlSession.selectOne("selectUserNickname",nickname);
+	}
+	public int updateNickName(UserVO vo){
+		return sqlSession.update("updateNickName",vo);
+	}
 	public List<UserVO>selectUserList() {
 		return sqlSession.selectList("selectUserList");
 	}
