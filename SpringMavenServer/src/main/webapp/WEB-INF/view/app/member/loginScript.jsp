@@ -28,9 +28,6 @@
 <a id="kakao-login-btn"></a>
 <a href="http://developers.kakao.com/logout"></a></div>
 
-
-
-
   <script type="text/javascript">
 	var loginCheck = false;
 	
@@ -38,8 +35,11 @@
 	버튼 링크에 https://nid.naver.com/oauth2.0/authorize?response_type=token&client_id=iJniRieB_LTnqFzPCndV&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fapp%2Flogin%2FloginScriptCallback.do&state=0b2621fa-2239-485b-8158-4c85d2d1c814*/
 	var serviceUrl = "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port);
 	var callbackUrl =  serviceUrl + "/app/login/loginScriptCallback.do";
-	
-	var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+	//LEECHAEHEE Client ID : xiHvXJarMFipg36pfAtS
+	//iJniRieB_LTnqFzPCndV
+	var naver_id_login = new naver_id_login("xiHvXJarMFipg36pfAtS", callbackUrl);
+// 	var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("green", 3,60);
   	naver_id_login.setDomain(serviceUrl);

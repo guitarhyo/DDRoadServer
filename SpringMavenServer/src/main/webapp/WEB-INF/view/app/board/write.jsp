@@ -10,12 +10,15 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <title>글작성</title>
 <script type="text/javascript">
+	
 </script>
 </head>
 <body>
+<%request.setCharacterEncoding("UTF-8");%>
+
 <form action="/app/board/writeOK.do" id="writeForm">
-	<input type="hidden" name="writer" id="writer" value="${DDROAD_USER_ID}" />
-	<input type="hidden" name="nickname" id="nickname" value="${DDROAD_USER_NICKNAME}"/>
+	<input type="hidden" name="writer" id="writer" value="${DDROAD_USER.getName()}" />
+	<input type="hidden" name="nickname" id="nickname" value="${DDROAD_USER.getNickname()}"/>
 	<table>
 		<tr>
 			<td>제목</td>

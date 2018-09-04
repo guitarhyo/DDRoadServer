@@ -20,7 +20,6 @@
 </insert>
 
 <insert id="write" parameterType="com.ddroad.model.BoardVO">
-	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{content})
-	
+	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{contents})
 </insert>
 </mapper>

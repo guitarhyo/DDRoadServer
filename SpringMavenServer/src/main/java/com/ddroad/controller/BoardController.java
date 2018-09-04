@@ -1,18 +1,16 @@
 package com.ddroad.controller;
 
-import java.util.List;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ddroad.model.BoardVO;
@@ -53,9 +51,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/writeOK.do")
-	public String writeOK(BoardVO vo) {
-		System.out.println(vo);
-		return "app/board/list";
+	public String writeOK(BoardVO vo,HttpServletResponse response) throws Exception {
+		response.setCharacterEncoding("UTF-8");
+		boardService.write(vo);
+//		System.out.println(vo);
+		return "redirect:/app/board/boardList.do";
 	}
 	
 }

@@ -13,8 +13,9 @@
 <script type="text/javascript"> 	
 	var serviceUrl = "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port);
 	var callbackUrl =  serviceUrl + "/app/login/loginScriptCallback.do";	
-	var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
-
+// 	var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+	var naver_id_login = new naver_id_login("xiHvXJarMFipg36pfAtS", callbackUrl);
+	
   // 접근 토큰 값
   var userAccessToken = naver_id_login.oauthParams.access_token;
   
