@@ -14,9 +14,8 @@
 </script>
 </head>
 <body>
-<%request.setCharacterEncoding("UTF-8");%>
-
-<form action="/app/board/writeOK.do" id="writeForm">
+<!-- 폼전송은 post로 보내주셈 get방식은 길이제한 및 인코딩 문제-->
+<form action="/app/board/writeOK.do" id="writeForm" method="post">
 	<input type="hidden" name="writer" id="writer" value="${DDROAD_USER.getName()}" />
 	<input type="hidden" name="nickname" id="nickname" value="${DDROAD_USER.getNickname()}"/>
 	<table>
