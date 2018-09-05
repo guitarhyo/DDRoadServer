@@ -4,12 +4,26 @@
 <!DOCTYPE>
 <html>
 <head>
+<title>Insert title here</title>
 <meta charset="utf-8" /> 
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <meta name="format-detection" content="telephone=no"/>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<title>Insert title here</title>
+<script type="text/javascript" src="/resources/js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="/resources/js/kakao.min.js"></script>
 
+<script type="text/javascript">
+// 사용할 앱의 JavaScript 키를 설정해 주세요.
+//  Kakao.init('6b88578ce2c3d0a98804ff9066fe65a7');
+ 
+// function boardLogout() {
+	
+// 	Kakao.Auth.logout(function(data) {
+// 		alert(data);
+// 		Kakao.cleanup();
+// 	});
+// }
+	
+</script>
 </head>
 <body>
 <table border="1">
@@ -29,7 +43,7 @@
 </c:forEach>
 </table>
 <button onclick="location.href='/app/board/write.do'">글 쓰기</button>
-
+<!-- <button onclick="boardLogout();">카카오 로그아웃</button> -->
 <p>유저 리스트</p>
 <table border="1">
 <c:forEach items="${userList }" var="list2">

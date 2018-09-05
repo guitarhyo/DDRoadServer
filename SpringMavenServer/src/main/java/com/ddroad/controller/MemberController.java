@@ -63,9 +63,9 @@ public class MemberController {
 	
 	@RequestMapping("/join.do")
 	public String join(final UserVO vo) throws Exception{
-		service.join(vo);
+		UserVO userVO = service.join(vo);
 		
-		session.setAttribute("DDROAD_USER", vo);
+		session.setAttribute("DDROAD_USER", userVO);
 	
 //		System.out.println(id + " " + email + " " + nickname + " " + gender + " " + age);
 		return "redirect:/app/login/loginScript.do";

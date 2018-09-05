@@ -12,13 +12,16 @@ import com.ddroad.model.UserVO;
 public class UserService{
 	@Autowired private UserDao dao;
 
-	public void join(UserVO vo) throws Exception {
+	public UserVO join(UserVO vo) throws Exception {
+		UserVO userVO = null;
 		/*아이디가 저장 되어있지 않을 때만 저장*/
 		if(selectById(vo.getId())==0) {
 			dao.join(vo);
+			userVO = vo;
 		}else{
-			vo = dao.selectByUser(vo.getId());
+			 userVO = dao.selectByUser(vo.getId());
 		}
+		return userVO;
 	}
 
 	/*중복 아이디 존재 여부 확인*/
