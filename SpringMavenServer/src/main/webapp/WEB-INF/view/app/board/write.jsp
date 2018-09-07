@@ -27,6 +27,7 @@
 			<td>내용</td>
 			<td><textarea rows="20" cols="80" name="contents" id="contents"></textarea></td>
 		</tr>
+		<tr><td></td><td><p style="font-size: 0.9em;color:#bbbbbb">알림) 몇몇 이모티콘은 필터링 되어 저장됩니다.</p></td></tr>
 		<tr>
 			<td><input type="submit" value="등록" name="submit" id="submit" /></td>
 			<td><input type="button" value="취소" name="cancel" id="cancel" onclick="history.back()" /></td>

@@ -38,4 +38,8 @@
 	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{contents})
 	
 </insert>
+<!-- DELETE writing -->
+<delete id="deleteWriting" parameterType="string">
+	DELETE FROM BOARD WHERE id=#{id}
+</delete>
 </mapper>

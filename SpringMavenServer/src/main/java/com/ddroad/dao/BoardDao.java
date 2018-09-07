@@ -36,4 +36,7 @@ public class BoardDao {
 	public int write(BoardVO vo) throws Exception{
 		return sqlSession.insert("write", vo);
 	}
+	public int delete(String id) throws Exception{
+		return sqlSession.delete("deleteWriting",id);
+	}
 }

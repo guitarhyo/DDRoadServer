@@ -62,9 +62,14 @@ public class BoardController {
 	@RequestMapping("/writeOK.do")
 	public String writeOK(BoardVO vo,HttpServletResponse response) throws Exception {
 		response.setCharacterEncoding("UTF-8");
-		boardService.write(vo);
+		boardService.write(vo,response);
 //		System.out.println(vo);
 		return "redirect:/app/board/boardList.do";
 	}
 	
+	@RequestMapping("/delete.do")
+	public String delete(String id, HttpServletResponse response) throws Exception{
+		boardService.delete(id);
+		return "redirect:/app/board/boardList.do";
+	}
 }

@@ -22,10 +22,18 @@
 // 		Kakao.cleanup();
 // 	});
 // }
-	
+	function deleteConfirm(id){
+		console.log(id);
+		if(confirm("삭제하시겠습니까?")){
+			location.href="/app/board/delete.do?id="+id;
+		}else{
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
+<p>안녕하세요 ${DDROAD_USER.getName()} 님!</p>
 <table border="1">
 <tr>
 	<th>제목</th>
@@ -39,6 +47,11 @@
 		<td>${list.contents }</td>
 		<td>${list.nickname }</td>
 		<td>${list.writer }</td>
+		<td>
+			<c:if test="${list.writer eq DDROAD_USER.getName()}" >
+				<button onclick="deleteConfirm(${list.id})">삭제</button>
+			</c:if>
+		</td>
 	</tr>
 </c:forEach>
 </table>
