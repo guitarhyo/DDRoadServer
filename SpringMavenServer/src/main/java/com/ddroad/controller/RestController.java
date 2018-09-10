@@ -45,6 +45,9 @@ public class RestController {
 	@Autowired
 	HttpServletRequest request;
 	
+	@Autowired
+	RestTemplate restTemplate;
+	
   @RequestMapping(value = "/api/search/restKakaoApi.do")
   public @ResponseBody ObjectNode restKakaoApi()
       throws Exception {
@@ -61,13 +64,13 @@ public class RestController {
 //			System.out.println(name + " : " + request.getParameter(name));
 //		}
 
-		RestTemplate restTemplate = new RestTemplate();
 
-		SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
 
-		requestFactory.setConnectTimeout(7000); // set short connect timeout
-		requestFactory.setReadTimeout(7000); // set slightly longer read timeout
-		restTemplate.setRequestFactory(requestFactory);
+//		SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+//
+//		requestFactory.setConnectTimeout(7000); // set short connect timeout
+//		requestFactory.setReadTimeout(7000); // set slightly longer read timeout
+//		restTemplate.setRequestFactory(requestFactory);
 		
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		String query = request.getParameter("query");
@@ -114,7 +117,7 @@ public class RestController {
 		HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<MultiValueMap<String, String>>(params,
 				headers);
 
-		ObjectNode responseEntity = restTemplate.postForObject(new URI("https://dapi.kakao.com/v2/local/search/keyword.json"),
+		ObjectNode responseEntity = restTemplate.postForObject("https://dapi.kakao.com/v2/local/search/keyword.json",
 				entity, ObjectNode.class);
 
 		System.out.println(responseEntity.toString());
