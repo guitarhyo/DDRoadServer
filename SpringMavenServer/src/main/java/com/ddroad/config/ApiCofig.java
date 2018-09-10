@@ -47,6 +47,6 @@ public class ApiCofig {
 		    requestFactory.setHttpClient(httpClient);
 		    RestTemplate restTemplate = new RestTemplate(requestFactory);
 		    
-	        return new RestTemplate();
+	        return restTemplate;
 	    }
 }
