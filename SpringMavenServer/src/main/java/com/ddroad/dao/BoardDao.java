@@ -39,4 +39,10 @@ public class BoardDao {
 	public int delete(String id) throws Exception{
 		return sqlSession.delete("deleteWriting",id);
 	}
+	public BoardVO lookupContents(String id) throws Exception{
+		return sqlSession.selectOne("lookupContents",id);
+	}
+	public int modity(BoardVO vo) throws Exception{
+		return sqlSession.update("modifyWriting",vo);
+	}
 }

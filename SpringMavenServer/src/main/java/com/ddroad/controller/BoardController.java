@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.junit.runners.Parameterized.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -67,9 +69,32 @@ public class BoardController {
 		return "redirect:/app/board/boardList.do";
 	}
 	
+	@RequestMapping("/lookupContents.do")
+	public ModelAndView lookupContents(@RequestParam String id) throws Exception{
+		ModelAndView mav = new ModelAndView("app/board/contents");
+		mav.addObject("boardVO",boardService.lookupContents(id));
+		return mav;
+	}
+	
 	@RequestMapping("/delete.do")
 	public String delete(String id, HttpServletResponse response) throws Exception{
 		boardService.delete(id);
 		return "redirect:/app/board/boardList.do";
+	}
+	
+	@RequestMapping("/modifyView.do")
+	public ModelAndView modifyView(@RequestParam String id) throws Exception {
+		ModelAndView mav = new ModelAndView("/app/board/modify");
+		mav.addObject("boardVO", boardService.lookupContents(id));
+		return mav;
+	}
+	
+	@RequestMapping("/modify.do")
+	public ModelAndView modify(@ModelAttribute BoardVO vo) throws Exception{
+		System.out.println(vo);
+		boardService.modify(vo);
+		ModelAndView mav = new ModelAndView("redirect:/app/board/boardList.do");
+		mav.addObject("boardVO", boardService.lookupContents(vo.getId()));
+		return mav;
 	}
 }

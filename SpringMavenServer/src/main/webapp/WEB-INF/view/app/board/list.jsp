@@ -44,7 +44,7 @@
 <c:forEach items="${list }" var="list">
 	<tr>
 		<td>${list.title }</td>
-		<td>${list.contents }</td>
+		<td><a href="/app/board/lookupContents.do?id=${list.id}">${list.contents}</a></td>
 		<td>${list.nickname }</td>
 		<td>${list.writer }</td>
 		<td>

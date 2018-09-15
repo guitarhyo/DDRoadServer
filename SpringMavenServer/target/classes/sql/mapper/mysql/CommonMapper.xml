@@ -36,10 +36,17 @@
 
 <insert id="write" parameterType="com.ddroad.model.BoardVO">
 	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{contents})
-	
 </insert>
 <!-- DELETE writing -->
 <delete id="deleteWriting" parameterType="string">
 	DELETE FROM BOARD WHERE id=#{id}
 </delete>
+<!-- look up writing -->
+<select id="lookupContents" parameterType="String" resultType="com.ddroad.model.BoardVO">
+	SELECT * FROM BOARD WHERE id=#{id}
+</select>
+<!-- modify writing -->
+<select id="modifyWriting" parameterType="com.ddroad.model.BoardVO">
+	UPDATE BOARD SET title=#{title}, contents=#{contents} WHERE id=#{id};	
+</select>
 </mapper>

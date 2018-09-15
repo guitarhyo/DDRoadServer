@@ -41,8 +41,17 @@ public class BoardService {
 		return dao.write(vo);
 	}
 	
+	public BoardVO lookupContents(String id) throws Exception{
+		return dao.lookupContents(id);
+	}
 	
 	public int delete(String id) throws Exception{
 		return dao.delete(id);
 	}
+	
+	public int modify(BoardVO vo) throws Exception{
+		return dao.modity(vo);
+	}
+	
+	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ddroad.dao.UserDao;
+import com.ddroad.model.BoardVO;
 import com.ddroad.model.UserVO;
 
 @Service
@@ -41,4 +42,5 @@ public class UserService{
 	public List<UserVO> selectUserList()throws Exception {
 		return dao.selectUserList();
 	}
+	
 }
