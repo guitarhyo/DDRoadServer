@@ -4,4 +4,4 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<<jsp:forward page="/app/login/loginScript.do"></jsp:forward>
+<jsp:forward page="/app/board/boardList.do"></jsp:forward>

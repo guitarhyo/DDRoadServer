@@ -38,9 +38,7 @@ public class BoardController {
 	    	System.out.println("session.getAttribute(\"DDROAD_USER\")===="+session.getAttribute("DDROAD_USER"));
 	    	UserVO userVO =	(UserVO) session.getAttribute("DDROAD_USER");
 	    	
-			if(userVO == null){
-				return new ModelAndView("redirect:/");
-			}else if(userVO.getNickname() == null || "".equals(userVO.getNickname())){
+			if(userVO.getNickname() == null || "".equals(userVO.getNickname())){
 				return new ModelAndView("redirect:/app/login/checkNickNamePage.do");
 			}
 			
