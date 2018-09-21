@@ -10,22 +10,48 @@
   	<script type="text/javascript" src="/resources/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
   	<script type="text/javascript" src="/resources/js/kakao.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-1.12.1.min.js"></script>
+	
+	<!-- Bootstrap Core CSS -->
+    <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="/resources/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/resources/css/stylish-portfolio.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap core JavaScript -->
+    <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/resources/js/stylish-portfolio.min.js"></script>	
+    
+    <style>
+    	body{
+    		overflow-y: hidden; overflow-x: hidden;
+    	}
+    </style>
 </head>
 <body>
-
-<!-- 버튼 event 처리를 위하여 id를 지정 id=loginButton -->
-<div id="naver_id_login">
-<a id="naverIdLogin_loginButton" href="#" role="button">
-<img src="/resources/images/big_g.PNG" width=320>
-</a>
-</div>
-<div><a id="kakao-login-btn"></a>
-<!-- <a href="http://developers.kakao.com/logout"></a> -->
-</div>
 
 <!-- <div>이미지<input type="file" id="imgPath" name="imgPath" value=""  /></div> -->
 <!-- <div id="boardImg"></div> -->
 
+
+    <section class="callout">
+      <div class="container text-center">
+        <h2 class="mx-auto mb-5" style="color:#ffffff">자유게시판</h2>
+        <h5 style="color:#002266">이용을 위해 로그인을 해주세요</h5>
+        <div id="naver_id_login" style="margin-top: 1em">
+			<a id="naverIdLogin_loginButton" href="#" role="button">
+			<img src="/resources/images/big_g.PNG" width=320>
+      </div>
+    </section>
 
 <script type="text/javascript">
 
@@ -73,7 +99,8 @@ $(document).ready(function() {
 	  	var serviceUrl = "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port);
 	  	var callbackUrl =  serviceUrl + "/app/login/loginScriptCallback.do";
 
-		var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+		//var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+		var naver_id_login = new naver_id_login("L7QDEVn9rcIZDT6A4dfM", callbackUrl);
 	  	var state = naver_id_login.getUniqState();
 	  	naver_id_login.setButton("green", 3,48);
 	  	naver_id_login.setDomain(serviceUrl);

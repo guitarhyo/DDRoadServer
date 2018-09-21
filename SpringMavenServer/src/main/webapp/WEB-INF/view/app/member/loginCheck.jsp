@@ -6,17 +6,77 @@
   	<meta charset="utf-8" /> 
 	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 	<meta name="format-detection" content="telephone=no"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="/resources/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/resources/css/stylish-portfolio.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap core JavaScript -->
+    <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/resources/js/stylish-portfolio.min.js"></script>	
+    
+        <style>
+    
+    .text-second{
+    	margin-top: 1em;
+    	color: #EAEAEA;
+    }
+    
+    
+    #title,#contents,#modify,#cancel,#check{
+    	border-radius: 4px 4px 4px 4px;
+    }
+    
+    #modify,#cancel,#check{
+    	background-color: #ffffff;
+    	font-weight: bold;
+    	color:#084B8A;
+    }
+    
+    body{
+    	background-color: #1d809f
+    	
+    }
+    
+    </style>	
+	
   <title>네이버 로그인</title>
 	<script type="text/javascript" src="/resources/js/jquery-1.12.1.min.js"></script>
 </head>
 <body>
 
 <!-- /checkNickName.do -->
-<ul>
+<%-- <ul>
 <li>닉네임이 없어요!! 게시판에 사용 할 닉네임을 입력 해주세요. <input type="hidden" id="userId" name="userId" value="${userId}"/></li>
 <li>닉네임 : <input type="text" id="nickname" name="nickname" value="" maxlength="25"/></li>
 <li><input type="button"  value="확인" onclick="checkNickName();"/></li>
-</ul>
+</ul> --%>
+
+    <section class="content-section bg-primary text-white text-center" id="services">
+      <div class="container">
+        <div class="content-section-heading">
+          <p style="font-size:x-large; font-weight: bold;" >닉네임 등록</p>
+          <input type="hidden" id="userId" name="userId" value="${userId}"/>
+          <input type="text" id="nickname" name="nickname" value="" maxlength="25"/>
+		  <tr>
+			<td><input type="button" value="확인" id="check" onclick="checkNickName();"/></td>
+		  </tr>
+        </div>
+      </div>
+    </section>
 
 
 <script type="text/javascript">

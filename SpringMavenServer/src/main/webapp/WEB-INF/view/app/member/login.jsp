@@ -7,6 +7,7 @@
 	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 	<meta name="format-detection" content="telephone=no"/>
 	
+	
 	<style>body{padding-top: 60px;}</style>
 	
     <link href="/resources/css/bootstrap.css" rel="stylesheet" />
