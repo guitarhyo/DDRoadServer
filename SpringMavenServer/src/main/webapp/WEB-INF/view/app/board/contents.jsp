@@ -24,6 +24,7 @@
     <!-- Plugin JavaScript -->
     <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
+
     <!-- Custom scripts for this template -->
     <script src="/resources/js/stylish-portfolio.min.js"></script>
     
