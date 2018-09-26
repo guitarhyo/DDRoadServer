@@ -6,15 +6,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.junit.runners.Parameterized.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ddroad.model.BoardVO;
+import com.ddroad.model.ReplyVO;
 import com.ddroad.model.UserVO;
 import com.ddroad.service.BoardService;
 import com.ddroad.service.UserService;
@@ -35,7 +37,7 @@ public class BoardController {
 		  
 	    ModelAndView mav = new ModelAndView();
 	    try {
-	    	System.out.println("session.getAttribute(\"DDROAD_USER\")===="+session.getAttribute("DDROAD_USER"));
+//	    	System.out.println("session.getAttribute(\"DDROAD_USER\")===="+session.getAttribute("DDROAD_USER"));
 	    	UserVO userVO =	(UserVO) session.getAttribute("DDROAD_USER");
 	    	
 			if(userVO.getNickname() == null || "".equals(userVO.getNickname())){
@@ -63,7 +65,6 @@ public class BoardController {
 	public String writeOK(BoardVO vo,HttpServletResponse response) throws Exception {
 		response.setCharacterEncoding("UTF-8");
 		boardService.write(vo,response);
-//		System.out.println(vo);
 		return "redirect:/app/board/boardList.do";
 	}
 	
@@ -71,6 +72,7 @@ public class BoardController {
 	public ModelAndView lookupContents(@RequestParam String id) throws Exception{
 		ModelAndView mav = new ModelAndView("app/board/contents");
 		mav.addObject("boardVO",boardService.lookupContents(id));
+		mav.addObject("replyList",boardService.getReplyList(id));
 		return mav;
 	}
 	
@@ -91,8 +93,46 @@ public class BoardController {
 	public ModelAndView modify(@ModelAttribute BoardVO vo) throws Exception{
 		System.out.println(vo);
 		boardService.modify(vo);
-		ModelAndView mav = new ModelAndView("redirect:/app/board/boardList.do");
+		ModelAndView mav = new ModelAndView("redirect:/app/board/lookupContents.do?id="+vo.getId());
 		mav.addObject("boardVO", boardService.lookupContents(vo.getId()));
 		return mav;
+	}
+	
+	/**
+	 * 댓글 등록 
+	 * @param vo
+	 * @param response
+	 * @return 마지막 댓글 번호
+	 * @throws Exception
+	 */
+	@RequestMapping(value="regitReply.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String regitReply(ReplyVO vo,HttpServletResponse response) throws Exception {
+		String result = boardService.regitReply(vo); 
+		if(result=="failed") {
+			return "failed"; 
+		}else {
+			return result;
+		}
+	}
+	
+	@RequestMapping("/modifyReply.do")
+	@ResponseBody
+	public String modifyReply(ReplyVO vo) throws Exception{
+		if(boardService.modifyReply(vo)==1) {
+			return "success";
+		}else {
+			return "failed";
+		}
+	}
+	
+	@RequestMapping("/deleteReply.do")
+	@ResponseBody
+	public String deleteReply(String r_id) throws Exception{
+		if(boardService.deleteReply(r_id)==1) {
+			return "success";
+		}else {
+			return "failed";
+		}
 	}
 }

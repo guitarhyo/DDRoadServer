@@ -34,6 +34,7 @@
 		<tr>
 			<td><input type="submit" value="등록" name="submit" id="submit" /></td>
 			<td><input type="button" value="취소" name="cancel" id="cancel" onclick="history.back()" /></td>
+			<td><input type="file" value="파일 업로드" id="imageFile" name="imageFile"/></td>
 		</tr>
 	</table>
 </form>

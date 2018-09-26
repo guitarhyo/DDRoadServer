@@ -1,6 +1,9 @@
 package com.ddroad.model;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class BoardVO {
@@ -12,7 +15,10 @@ public class BoardVO {
 	private int like;
 	private int hit;
 	private Timestamp regdt;
+	private String strRegDt;
 	
+	
+
 	public String getWriter() {
 		return writer;
 	}
@@ -62,6 +68,15 @@ public class BoardVO {
 	public void setRegdt(Timestamp regdt) {
 		this.regdt = regdt;
 	}
+	public String getStrRegDt() {
+		Date date = new Date((long)this.regdt.getTime());
+		DateFormat f = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		return f.format(date);	
+	}
+	
+	public void setStrRegDt(String strRegDt) {
+		this.strRegDt = "fuckyou";
+	}
 
 	@Override
 	public String toString() {
@@ -82,8 +97,11 @@ public class BoardVO {
 		builder.append(hit);
 		builder.append(", regdt=");
 		builder.append(regdt);
+		builder.append(", strRegDt=");
+		builder.append(strRegDt);
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
+
 }

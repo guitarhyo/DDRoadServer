@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.ddroad.model.BoardVO;
+import com.ddroad.model.ReplyVO;
 
 @Repository
 public class BoardDao {
@@ -30,7 +31,7 @@ public class BoardDao {
 	 * </pre>
 	 */
 	public List<Map<String,String>> selectBoard() throws Exception {
-		return sqlSession.selectList(NS +"selectBoard");
+		return sqlSession.selectList("selectBoard");
 	}
 	
 	public int write(BoardVO vo) throws Exception{
@@ -42,7 +43,23 @@ public class BoardDao {
 	public BoardVO lookupContents(String id) throws Exception{
 		return sqlSession.selectOne("lookupContents",id);
 	}
-	public int modity(BoardVO vo) throws Exception{
+	public int modify(BoardVO vo) throws Exception{
 		return sqlSession.update("modifyWriting",vo);
+	}
+	
+	public List<Map<String, String>> getReplyList(String boardId) throws Exception{
+		return sqlSession.selectList("getReplyList",boardId);
+	}
+	
+	public int regitReply(ReplyVO vo){
+		return sqlSession.insert("regitReply",vo);
+	}
+	
+	public int modifyReply(ReplyVO vo) {
+		return sqlSession.update("modifyReply",vo);
+	}
+	
+	public int deleteReply(String replyId) {
+		return sqlSession.delete("deleteReply",replyId);
 	}
 }

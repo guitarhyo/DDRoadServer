@@ -72,8 +72,11 @@ $(document).ready(function() {
 	  	// LoginWithNaverId Javscript 설정 정보 및 초기화
 	  	var serviceUrl = "http://" + window.location.hostname + ((location.port==""||location.port==undefined)?"":":" + location.port);
 	  	var callbackUrl =  serviceUrl + "/app/login/loginScriptCallback.do";
-
+		
+	  	
 		var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+		
+		
 	  	var state = naver_id_login.getUniqState();
 	  	naver_id_login.setButton("green", 3,48);
 	  	naver_id_login.setDomain(serviceUrl);

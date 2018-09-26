@@ -45,8 +45,8 @@
 	<tr>
 		<td>${list.title }</td>
 		<td><a href="/app/board/lookupContents.do?id=${list.id}">${list.contents}</a></td>
+		<td>${list.regdt }</td>
 		<td>${list.nickname }</td>
-		<td>${list.writer }</td>
 		<td>
 			<c:if test="${list.writer eq DDROAD_USER.getName()}" >
 				<button onclick="deleteConfirm(${list.id})">삭제</button>
