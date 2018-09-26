@@ -74,7 +74,8 @@ $(document).ready(function() {
 	  	var callbackUrl =  serviceUrl + "/app/login/loginScriptCallback.do";
 		
 	  	
-		var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+// 		var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+		var naver_id_login = new naver_id_login("L7QDEVn9rcIZDT6A4dfM", callbackUrl);
 		
 		
 	  	var state = naver_id_login.getUniqState();
