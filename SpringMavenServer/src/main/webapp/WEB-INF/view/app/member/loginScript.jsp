@@ -75,6 +75,7 @@ $(document).ready(function() {
 		
 	  	
  		var naver_id_login = new naver_id_login("iJniRieB_LTnqFzPCndV", callbackUrl);
+//  		var naver_id_login = new naver_id_login("xiHvXJarMFipg36pfAtS", callbackUrl);
 		
 		
 	  	var state = naver_id_login.getUniqState();
@@ -124,10 +125,6 @@ function goPageBoard() {
     		alert("로그인 하시오");
     	}
 }
-
-
-
-
 
   </script>
 </html>
