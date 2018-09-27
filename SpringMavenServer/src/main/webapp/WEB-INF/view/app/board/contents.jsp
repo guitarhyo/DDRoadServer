@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
+
 	<p>글 번호 : ${boardVO.getId() }</p>
 	<table>
 		<tr>

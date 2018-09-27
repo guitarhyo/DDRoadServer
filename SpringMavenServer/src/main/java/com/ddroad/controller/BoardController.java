@@ -63,6 +63,7 @@ public class BoardController {
 	
 	@RequestMapping("/writeOK.do")
 	public String writeOK(BoardVO vo,HttpServletResponse response) throws Exception {
+		System.out.println(vo.getContents());
 		response.setCharacterEncoding("UTF-8");
 		boardService.write(vo,response);
 		return "redirect:/app/board/boardList.do";
@@ -89,9 +90,15 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping("/modify.do")
+	@RequestMapping(value="modify.do", method=RequestMethod.POST)
 	public ModelAndView modify(@ModelAttribute BoardVO vo) throws Exception{
-		System.out.println(vo);
+//		System.out.println("id : " + vo.getId());
+//		System.out.println("nickname : " + vo.getNickname());
+//		System.out.println("title : " + vo.getTitle());
+//		System.out.println("contents : " + vo.getContents());
+//		System.out.println("writer : " + vo.getWriter());
+//		System.out.println("regdt : " + vo.getRegdt());
+//		System.out.println("imgBase64 : " + vo.getImgBase64());
 		boardService.modify(vo);
 		ModelAndView mav = new ModelAndView("redirect:/app/board/lookupContents.do?id="+vo.getId());
 		mav.addObject("boardVO", boardService.lookupContents(vo.getId()));

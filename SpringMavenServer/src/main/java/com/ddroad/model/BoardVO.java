@@ -114,7 +114,7 @@ public class BoardVO {
 		builder.append(getTitle());
 		builder.append(", getContents()=");
 		builder.append(getContents());
-		builder.append(", getImg()=");
+		builder.append(", getImgBase64()=");
 		builder.append(getImgBase64());
 		builder.append(", getNickname()=");
 		builder.append(getNickname());
