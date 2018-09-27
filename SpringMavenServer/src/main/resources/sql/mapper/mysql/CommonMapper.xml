@@ -35,7 +35,7 @@
 </update>
 
 <insert id="write" parameterType="com.ddroad.model.BoardVO">
-	INSERT INTO BOARD (title,writer,nickname,contents) VALUES (#{title}, #{writer}, #{nickname}, #{contents})
+	INSERT INTO BOARD (title,writer,nickname,contents,imgBase64) VALUES (#{title}, #{writer}, #{nickname}, #{contents}, #{imgBase64})
 </insert>
 <!-- DELETE writing -->
 <delete id="deleteWriting" parameterType="string">

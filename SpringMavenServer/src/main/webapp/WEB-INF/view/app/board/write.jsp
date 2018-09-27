@@ -16,6 +16,7 @@
 <form action="/app/board/writeOK.do" id="writeForm" method="post">
 	<input type="hidden" name="writer" id="writer" value="${DDROAD_USER.getName()}" />
 	<input type="hidden" name="nickname" id="nickname" value="${DDROAD_USER.getNickname()}"/>
+	<input type="hidden" name="imgBase64" id="imgBase64" value=""/>
 	<table>
 		<tr>
 			<td>제목</td>
@@ -34,20 +35,39 @@
 		<tr>
 			<td><input type="submit" value="등록" name="submit" id="submit" /></td>
 			<td><input type="button" value="취소" name="cancel" id="cancel" onclick="history.back()" /></td>
-			<td><input type="file" value="파일 업로드" id="imageFile" name="imageFile"/></td>
+			<td><input type="file" value="파일 업로드" id="img" name="img"/></td>
 		</tr>
 	</table>
 </form>
 <script type="text/javascript">
+	var result;
+	
 	$(function(){
 		 $('#contents').keyup(function (e){
 	          var content = $(this).val();
-			 console.log(content.length);
 	          $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
 	          $('#currentTextLength').html(content.length + '/300');
 	      });
 	      $('#contents').keyup();
 	})
+	
+	$("#img").change(function(){
+		var files = $("#img")[0].files;
+		if(files.length>0){
+			imageToString(files[0]);
+		}
+	})
+	
+	function imageToString(file){
+		var reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = function(){
+			$("#imgBase64").val(reader.result);
+		};
+		reader.onerror = function(error){
+			console.log("Error : " + error);
+		}
+	}	
 </script>
 </body>
 </html>

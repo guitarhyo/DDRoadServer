@@ -12,12 +12,11 @@ public class BoardVO {
 	private String writer;
 	private String nickname;
 	private String contents;
+	private String imgBase64;
 	private int like;
 	private int hit;
 	private Timestamp regdt;
 	private String strRegDt;
-	
-	
 
 	public String getWriter() {
 		return writer;
@@ -43,6 +42,12 @@ public class BoardVO {
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	public String getImgBase64() {
+		return imgBase64;
+	}
+	public void setImgBase64(String imgBase64) {
+		this.imgBase64 = imgBase64;
 	}
 	public String getNickname() {
 		return nickname;
@@ -91,6 +96,8 @@ public class BoardVO {
 		builder.append(nickname);
 		builder.append(", contents=");
 		builder.append(contents);
+		builder.append(", imgBase64=");
+		builder.append(imgBase64);
 		builder.append(", like=");
 		builder.append(like);
 		builder.append(", hit=");
@@ -99,9 +106,35 @@ public class BoardVO {
 		builder.append(regdt);
 		builder.append(", strRegDt=");
 		builder.append(strRegDt);
+		builder.append(", getWriter()=");
+		builder.append(getWriter());
+		builder.append(", getId()=");
+		builder.append(getId());
+		builder.append(", getTitle()=");
+		builder.append(getTitle());
+		builder.append(", getContents()=");
+		builder.append(getContents());
+		builder.append(", getImg()=");
+		builder.append(getImgBase64());
+		builder.append(", getNickname()=");
+		builder.append(getNickname());
+		builder.append(", getLike()=");
+		builder.append(getLike());
+		builder.append(", getHit()=");
+		builder.append(getHit());
+		builder.append(", getRegdt()=");
+		builder.append(getRegdt());
+		builder.append(", getStrRegDt()=");
+		builder.append(getStrRegDt());
+		builder.append(", getClass()=");
+		builder.append(getClass());
+		builder.append(", hashCode()=");
+		builder.append(hashCode());
+		builder.append(", toString()=");
+		builder.append(super.toString());
 		builder.append("]");
 		return builder.toString();
 	}
 
-
+	
 }
