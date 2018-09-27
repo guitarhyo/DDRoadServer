@@ -11,11 +11,11 @@ import com.ddroad.dao.CommonDao;
 @Service
 public class CommonService {
 
-	@Autowired
-	CommonDao commonDao;
-	
-	public List<Map<String,String>> selectBoard() throws Exception{
-		
-		return commonDao.selectBoard();
-	}
+//	@Autowired
+//	CommonDao commonDao;
+//	
+//	public List<Map<String,String>> selectBoard() throws Exception{
+//		
+//		return commonDao.selectBoard();
+//	}
 }

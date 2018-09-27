@@ -24,7 +24,7 @@ import com.ddroad.service.CommonService;
  * since 2018. 8. 22. 오후 9:46:37
  * History
  * Date				|	author		| 변경 내용
- * 2018. 8. 22.		|	N.H.KIM		|신규
+ * 2018. 8. 22.		|	N.H.KIM		| 신규
  * </pre>
  */
 @Controller
@@ -33,36 +33,12 @@ public class BaseController {
   @Autowired
   private CommonService service;
 
-
-
-
-  @RequestMapping("/boardList.do")
-  public ModelAndView login(HttpServletRequest request, HttpServletResponse response,
-      @RequestParam Map<String, Object> inParam) throws Exception {
-  
-    ModelAndView mav = new ModelAndView();
-    try {
-     
-
-      mav.addObject("list", service.selectBoard());
-      mav.addObject("testdata", "Hello World!! spring");
-
-      
-      mav.setViewName("app/board/list");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return mav;
-  }
-
-
-
-  @RequestMapping(value = "/loginJson.do")
-  public @ResponseBody Map<String, String> login(ModelAndView mv, HttpSession session)
-      throws Exception {
-   
-    return null;
-  }
+//  @RequestMapping(value = "/loginJson.do")
+//  public @ResponseBody Map<String, String> loginJson(ModelAndView mv, HttpSession session)
+//      throws Exception {
+//   
+//    return null;
+//  }
 
 
 }

@@ -4,8 +4,70 @@
 <mapper namespace="CommonDao">
 
 <select id="selectBoard" resultType="map">
-SELECT * FROM board
+	select * from BOARD order by regdt desc
 </select>
 
+<select id="selectUserList" resultType="com.ddroad.model.UserVO">
+	select * from USERS 
+</select>
+<select id="selectUserNickname" resultType="int" parameterType="string">
+	select COUNT(1) from USERS where nickname = #{nickname}
+</select>
 
+<select id="selectByUser" resultType="com.ddroad.model.UserVO" parameterType="string">
+	select * from USERS where id=#{id}
+</select>
+
+<select id="selectById" resultType="int" parameterType="string">
+	select count(1) from USERS where id=#{id}
+</select>
+
+<insert id="join" parameterType="com.ddroad.model.UserVO">
+	INSERT INTO USERS (id,email,name,accesstoken) VALUES (#{id}, #{email}, #{name},#{accesstoken})
+</insert>
+
+<update id="updateNickName" parameterType="com.ddroad.model.UserVO">
+	update 
+		USERS set 
+			nickname = #{nickname}
+		where
+	 		id = #{id}
+</update>
+
+<insert id="write" parameterType="com.ddroad.model.BoardVO">
+	INSERT INTO BOARD (title,writer,nickname,contents,imgBase64) VALUES (#{title}, #{writer}, #{nickname}, #{contents}, #{imgBase64})
+</insert>
+<!-- DELETE writing -->
+<delete id="deleteWriting" parameterType="string">
+	DELETE FROM BOARD WHERE id=#{id}
+</delete>
+<!-- look up writing -->
+<select id="lookupContents" parameterType="String" resultType="com.ddroad.model.BoardVO">
+	SELECT * FROM BOARD WHERE id=#{id}
+</select>
+<!-- modify writing -->
+<update id="modifyWriting" parameterType="com.ddroad.model.BoardVO">
+	UPDATE BOARD SET title=#{title}, contents=#{contents}, imgBase64=#{imgBase64} WHERE id=#{id}	
+</update>
+
+<!-- 댓글 리스트 가져오기 -->
+<select id="getReplyList" parameterType="String" resultType="com.ddroad.model.ReplyVO">
+	select * from reply where b_id=#{b_id} order by regdate
+</select>
+<!-- 댓글 등록 -->
+<insert id="regitReply" useGeneratedKeys="true" keyProperty="r_id" parameterType="com.ddroad.model.ReplyVO">
+	insert into reply (b_id,regid,nickname,contents) values (#{b_id},#{regId},#{nickname},#{contents});
+</insert>
+<!-- 댓글 하나 가져오기 -->
+<select id="getReply" parameterType="String" resultType="com.ddroad.model.ReplyVO">
+	select * from reply where r_id=#{r_id}
+</select>
+<!--  댓글 삭제 -->
+<delete id="deleteReply" parameterType="String">
+	delete from reply where r_id=#{r_id}
+</delete>
+<!-- 댓글 수정 -->
+<update id="modifyReply" parameterType="com.ddroad.model.ReplyVO">
+	update reply set contents=#{contents} where r_id=#{r_id}
+</update>
 </mapper>
