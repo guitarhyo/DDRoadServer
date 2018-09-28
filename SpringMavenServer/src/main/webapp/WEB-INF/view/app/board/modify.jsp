@@ -121,7 +121,7 @@
 		if(title == null || title =="" || contents == null || contents ==""){
 			alert("제목 또는 내용을 입력하세요.");
 		}else{
-			$("#writeForm").submit();
+			$("#modifyForm").submit();
 		}
 		
 		
