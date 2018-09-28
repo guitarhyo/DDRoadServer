@@ -66,7 +66,7 @@
         <div class="content-section-heading">
           <p style="font-size:x-large; font-weight: bold;" >${boardVO.getTitle()}</p>
           <h3 class="text-second">by-${boardVO.getNickname()}</h3>
-          <c:if test=""></c:if>
+          <c:if test="${boardVO.getImgBase64() ne null and boardVO.getImgBase64() ne '' }">
           <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="p-5" align="center">
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 			</div>
-			
+			</c:if>
           <textarea cols="40" name="contents" id="contents" maxlength="2048" style="height: 300px;resize: none;" readonly>${boardVO.getContents()}</textarea>
           <p class="text-faded mb-0" style="margin-top: 1em;margin-bottom: 2em;">${boardVO.getRegdt()}</p>
 
@@ -175,7 +175,7 @@
 			type:'POST',
 			data:{
 				'b_id':'${boardVO.getId() }',
-				'regId':'${DDROAD_USER.getId()}',
+				'regid':'${DDROAD_USER.getId()}',
 				'nickname':'${DDROAD_USER.getNickname()}',
 				'contents':$("#replyContents").val()
 			},
@@ -196,26 +196,24 @@
 	
 	function addReplyToTable(inputContents,lastRepyNum){
 		var html = "";
-		html += '<tr class="replyInnerWrapper" id="replyInnerWrapper_' + lastRepyNum + '">';
-		html += '<td>';
-		html += '<div class="replyInfoWrapper">';
-		html += '<p class="replyRegitInfo">';
-		html += '${DDROAD_USER.getNickname() }&nbsp;&nbsp; ' + getFormatDate(new Date());
-		html += '</p>';
-		html += '<ul class="replyManagement" id="replyManagement_' + lastRepyNum + '_1">';
-		html += '<li><p onclick="deleteReply(' + lastRepyNum + ')">삭제</p></li>';
-		html += '<li><p onclick="modifyReply(' + lastRepyNum + ')">수정</p></li>';
-		html += '</ul>';
-		html += '<ul class="replyManagement" id="replyManagement_' + lastRepyNum + '_2" style="display:none">';
-		html += '<li><p onclick="cancelModify(' + lastRepyNum + ')">취소</p></li>';
-		html += '<li><p onclick="completeModify(' + lastRepyNum + ')">수정</p></li>';
-		html += '</ul>';
-		html += '</div>';
-		html += '<div class="replyContentsWrapper" id="replyContentsWrapper_' + lastRepyNum + '">';
-		html += '<span id="contents_' + lastRepyNum + '">' + inputContents + '</span>';
-		html += '</div>';
-		html += '</td>';
-		html += '</tr>';
+		
+		
+		html += '<div id="replyInnerWrapper_' + lastRepyNum + '" class="resume-item d-flex flex-column flex-md-row mb-2">';
+		html += '<div class="resume-content mr-auto">';
+		html += '<div id="replyContentsWrapper_' + lastRepyNum + '">';
+		html += '<p id="contents_' + lastRepyNum + '" >' + inputContents + '</p></div>';
+		html += '<div class="subheading">by-${DDROAD_USER.getNickname() }</div></div>';
+		html += '<div class="resume-date text-md-right">';
+		html += '<span class="text-primary">'+ getFormatDate(new Date())+'</span></div>';
+       
+		html += '<div id="replyManagement_' + lastRepyNum + '_1" class="mb-2">';
+		html += '<a href="javascript:deleteReply(' + lastRepyNum + ');" class="btn btn-secondary"  style="margin-right: 3px;">삭제</a>';
+		html += '<a href="javascript:modifyReply(' + lastRepyNum + ');" class="btn btn-secondary">수정</a></div>';
+		
+		html += '<div id="replyManagement_' + lastRepyNum + '_2" class="mb-2" style="display:none">';
+		html += '<a href="javascript:cancelModify(' + lastRepyNum + ');" class="btn btn-secondary"  style="margin-right: 3px;">취소</a>';
+		html += '<a href="javascript:completeModify(' + lastRepyNum + ');" class="btn btn-secondary">수정</a></div></div>';
+
 		$("#replyTable").append(html);
 	}
 	
@@ -245,7 +243,7 @@
 		$("#replyManagement_" + r_id + "_2").css("display","inline-block");
 		
 		var html = "";
-		html += "<textarea id='modify_" + r_id + "' cols='100' rows='3' style='display:inline-block;resize:none'>";
+		html += "<textarea id='modify_" + r_id + "' class='form-control'  rows='3' cols='30' style='display:inline-block;resize:none'>";
 		html += "</textarea>";
 		
 		
