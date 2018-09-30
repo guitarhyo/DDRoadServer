@@ -8,7 +8,7 @@ import java.util.Date;
 public class ReplyVO {
 	private String b_id;
 	private String r_id;
-	private String regid;
+	private String regId;
 	private String nickname;
 	private String contents;
 	private Timestamp regDate;
@@ -32,12 +32,11 @@ public class ReplyVO {
 	public void setR_id(String r_id) {
 		this.r_id = r_id;
 	}
-	
-	public String getRegid() {
-		return regid;
+	public String getRegId() {
+		return regId;
 	}
-	public void setRegid(String regid) {
-		this.regid = regid;
+	public void setRegId(String regId) {
+		this.regId = regId;
 	}
 	public String getNickname() {
 		return nickname;
@@ -68,8 +67,8 @@ public class ReplyVO {
 		builder.append(b_id);
 		builder.append(", r_id=");
 		builder.append(r_id);
-		builder.append(", regid=");
-		builder.append(regid);
+		builder.append(", regId=");
+		builder.append(regId);
 		builder.append(", nickname=");
 		builder.append(nickname);
 		builder.append(", contents=");
