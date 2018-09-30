@@ -30,7 +30,7 @@
 	
 	
 	<input type="text" name="title" id="title" maxlength="30" value="${boardVO.getTitle() }"/>
-	<input type="file" value="파일업로드" id="img" name="img" />
+	<input type="file" value="파일업로드" id="getfile" name="img" />
 	<div class="contentWrapper">
 		<img src="${boardVO.getImgBase64() }" id="preview" style="display:block" alt="업로드 된 사진" />
 		<textarea name="contents" class="contentTextArea" id="contents" rows="15" style="resize:none">${boardVO.getContents() }</textarea>
@@ -46,24 +46,59 @@
 		$("#contents").val($("#pastContents").text());
 	})
 	
-	$("#img").change(function(){
-		var files = $("#img")[0].files;
-		if(files.length>0){
-			imageToString(files[0]);
-		}
+	$("#getfile").change(function(){
+		var fileList = this.files ;
+		    
+	    // 읽기
+	    var reader = new FileReader();
+	    reader.readAsDataURL(fileList [0]);
+
+	    //로드 한 후
+	    reader.onload = function  () {
+	        //로컬 이미지를 보여주기
+	        document.querySelector('#preview').src = reader.result;
+	        
+	        //썸네일 이미지 생성
+	        var tempImage = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
+	        tempImage.src = reader.result; //data-uri를 이미지 객체에 주입
+	        tempImage.onload = function() {
+	            //리사이즈를 위해 캔버스 객체 생성
+	            var canvas = document.createElement('canvas');
+	            var canvasContext = canvas.getContext("2d");
+	            canvasContext.drawImage(tempImage,0,0);
+	            
+	            var MAX_WIDTH = 330;
+	            var MAX_HEIGHT = 330;
+	            var width = tempImage.width;
+	            var height = tempImage.height;
+	            
+	          	if (width > height) {
+	              if (width > MAX_WIDTH) {
+	                height *= MAX_WIDTH / width;
+	                width = MAX_WIDTH;
+	              }
+	            } else {
+	              if (height > MAX_HEIGHT) {
+	                width *= MAX_HEIGHT / height;
+	                height = MAX_HEIGHT;
+	              }
+	            }
+	            
+	            //캔버스 크기 설정
+	            canvas.width = width; 
+	            canvas.height = height;
+	            
+	            //이미지를 캔버스에 그리기
+	            canvasContext.drawImage(this, 0, 0, width, height);
+	            //캔버스에 그린 이미지를 다시 data-uri 형태로 변환
+	            var dataURI = canvas.toDataURL("image/jpeg");
+	            
+	            //미리보기
+	            $("#preview").attr("src",dataURI);
+	            $("#imgBase64").val(dataURI);
+	        };
+	    }; 
 	})
-	
-	function imageToString(file){
-		var reader = new FileReader();
-		reader.readAsDataURL(file);
-		reader.onload = function(){
-			$("#imgBase64").val(reader.result);
-			$("#preview").attr("src",reader.result);
-		};
-		reader.onerror = function(error){
-			console.log("Error : " + error);
-		}
-	}	
 </script>
 </body>
 </html>
